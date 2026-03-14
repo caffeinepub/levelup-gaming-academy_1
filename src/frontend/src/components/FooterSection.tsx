@@ -1,9 +1,19 @@
-import { MessageCircle, Music, Youtube, Zap } from "lucide-react";
+import { MessageCircle, Send, Youtube, Zap } from "lucide-react";
 
 const SOCIAL_LINKS = [
-  { Icon: Youtube, color: "#ef4444", href: "#", label: "YouTube" },
+  {
+    Icon: Youtube,
+    color: "#ef4444",
+    href: "https://youtube.com/@levelupgamingacademy-f9l?si=LMvCOGhyrLAEvaBO",
+    label: "YouTube",
+  },
   { Icon: MessageCircle, color: "#5865F2", href: "#", label: "Discord" },
-  { Icon: Music, color: "#ffffff", href: "#", label: "TikTok" },
+  {
+    Icon: Send,
+    color: "#26a5e4",
+    href: "https://t.me/LevelupGamingAcedemy",
+    label: "Telegram",
+  },
 ];
 
 export default function FooterSection() {

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Music, Youtube } from "lucide-react";
+import { MessageCircle, Send, Youtube } from "lucide-react";
 import { useInView } from "../hooks/useInView";
 
 export default function CommunitySection() {
@@ -56,23 +56,31 @@ export default function CommunitySection() {
                 border: "1px solid rgba(239,68,68,0.4)",
                 color: "#ef4444",
               }}
-              onClick={() => window.open("#", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://youtube.com/@levelupgamingacademy-f9l?si=LMvCOGhyrLAEvaBO",
+                  "_blank",
+                )
+              }
             >
               <Youtube className="w-5 h-5 mr-2" />
               YouTube
             </Button>
             <Button
+              data-ocid="community.telegram_button"
               size="lg"
               variant="outline"
-              className="font-orbitron font-bold uppercase tracking-wider text-sm px-8 hover:bg-white/5"
+              className="font-orbitron font-bold uppercase tracking-wider text-sm px-8 hover:bg-sky-500/10"
               style={{
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "rgba(255,255,255,0.7)",
+                border: "1px solid rgba(38,165,228,0.4)",
+                color: "#26a5e4",
               }}
-              onClick={() => window.open("#", "_blank")}
+              onClick={() =>
+                window.open("https://t.me/LevelupGamingAcedemy", "_blank")
+              }
             >
-              <Music className="w-5 h-5 mr-2" />
-              TikTok
+              <Send className="w-5 h-5 mr-2" />
+              Telegram
             </Button>
           </div>
 
