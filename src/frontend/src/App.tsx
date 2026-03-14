@@ -6,40 +6,25 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import AboutSection from "./components/AboutSection";
-import CTASection from "./components/CTASection";
-import CommunitySection from "./components/CommunitySection";
 import FooterSection from "./components/FooterSection";
-import HeroSection from "./components/HeroSection";
-import LeaderboardSection from "./components/LeaderboardSection";
-import MembershipSection from "./components/MembershipSection";
 import Navbar from "./components/Navbar";
-import TournamentsSection from "./components/TournamentsSection";
-import TrainingSection from "./components/TrainingSection";
+import CommunityPage from "./pages/CommunityPage";
+import ContactPage from "./pages/ContactPage";
+import GamesPage from "./pages/GamesPage";
+import HomePage from "./pages/HomePage";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import MembershipPage from "./pages/MembershipPage";
 import PaymentFailure from "./pages/PaymentFailure";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import TournamentsPage from "./pages/TournamentsPage";
+import TrainingPage from "./pages/TrainingPage";
 
-function HomePage() {
-  const [unlockedPack, setUnlockedPack] = useState<number | null>(null);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("unlockedPack");
-    if (stored !== null) setUnlockedPack(Number.parseInt(stored, 10));
-  }, []);
-
+function Layout() {
   return (
     <>
       <Navbar />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <TrainingSection unlockedPack={unlockedPack} />
-        <MembershipSection />
-        <TournamentsSection unlockedPack={unlockedPack} />
-        <LeaderboardSection />
-        <CommunitySection />
-        <CTASection />
+        <Outlet />
       </main>
       <FooterSection />
     </>
@@ -54,10 +39,52 @@ const rootRoute = createRootRoute({
     </>
   ),
 });
-const homeRoute = createRoute({
+
+const layoutRoute = createRoute({
   getParentRoute: () => rootRoute,
+  id: "layout",
+  component: Layout,
+});
+
+const homeRoute = createRoute({
+  getParentRoute: () => layoutRoute,
   path: "/",
   component: HomePage,
+});
+const trainingRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/training",
+  component: TrainingPage,
+});
+const gamesRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/games",
+  component: GamesPage,
+});
+const membershipRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/membership",
+  component: MembershipPage,
+});
+const tournamentsRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/tournaments",
+  component: TournamentsPage,
+});
+const leaderboardRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/leaderboard",
+  component: LeaderboardPage,
+});
+const communityRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/community",
+  component: CommunityPage,
+});
+const contactRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: "/contact",
+  component: ContactPage,
 });
 const successRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -71,10 +98,20 @@ const failureRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
-  homeRoute,
+  layoutRoute.addChildren([
+    homeRoute,
+    trainingRoute,
+    gamesRoute,
+    membershipRoute,
+    tournamentsRoute,
+    leaderboardRoute,
+    communityRoute,
+    contactRoute,
+  ]),
   successRoute,
   failureRoute,
 ]);
+
 const router = createRouter({ routeTree });
 
 declare module "@tanstack/react-router" {

@@ -1,12 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Play, Trophy } from "lucide-react";
-import { useRef } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { Gamepad2, Trophy } from "lucide-react";
 
 export default function HeroSection() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   return (
     <section
@@ -92,7 +89,7 @@ export default function HeroSection() {
           <Button
             data-ocid="hero.primary_button"
             size="lg"
-            onClick={() => scrollTo("#training")}
+            onClick={() => navigate({ to: "/games" })}
             className="group relative font-orbitron font-bold uppercase tracking-wider text-sm px-8 py-6 transition-all duration-300"
             style={{
               background: "linear-gradient(135deg,#00d4ff,#0088aa)",
@@ -100,14 +97,14 @@ export default function HeroSection() {
               boxShadow: "0 0 20px rgba(0,212,255,0.3)",
             }}
           >
-            <Play className="w-4 h-4 mr-2" />
-            Start Training
+            <Gamepad2 className="w-4 h-4 mr-2" />
+            Select Games
           </Button>
           <Button
             data-ocid="hero.secondary_button"
             size="lg"
             variant="outline"
-            onClick={() => scrollTo("#tournaments")}
+            onClick={() => navigate({ to: "/tournaments" })}
             className="font-orbitron font-bold uppercase tracking-wider text-sm px-8 py-6 transition-all duration-300 hover:bg-purple-500/10"
             style={{
               border: "1px solid rgba(139,92,246,0.6)",
@@ -115,7 +112,7 @@ export default function HeroSection() {
             }}
           >
             <Trophy className="w-4 h-4 mr-2" />
-            Join Tournaments
+            View Tournaments
           </Button>
         </div>
 

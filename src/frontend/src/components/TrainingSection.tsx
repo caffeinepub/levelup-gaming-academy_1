@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { BookOpen, Lock, Zap } from "lucide-react";
 import { useState } from "react";
 import type { Game } from "../backend";
@@ -23,6 +24,7 @@ interface Props {
 export default function TrainingSection({ unlockedPack }: Props) {
   const { ref, inView } = useInView();
   const { actor } = useActor();
+  const navigate = useNavigate();
   const [modalGame, setModalGame] = useState<"chess" | "roblox" | null>(null);
 
   const { data: allGuides } = useQuery({
@@ -38,11 +40,6 @@ export default function TrainingSection({ unlockedPack }: Props) {
   const maxGuides = (_game: Game) => {
     if (unlockedPack === null || unlockedPack === 0) return 2;
     return 99;
-  };
-
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -161,7 +158,9 @@ export default function TrainingSection({ unlockedPack }: Props) {
                                     background: g.color,
                                     color: "#050510",
                                   }}
-                                  onClick={() => scrollTo("#packs")}
+                                  onClick={() =>
+                                    navigate({ to: "/membership" })
+                                  }
                                 >
                                   Upgrade Pack
                                 </Button>
