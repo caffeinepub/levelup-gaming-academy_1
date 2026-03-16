@@ -17,7 +17,6 @@ import MembershipPage from "./pages/MembershipPage";
 import PaymentFailure from "./pages/PaymentFailure";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import TournamentsPage from "./pages/TournamentsPage";
-import TrainingPage from "./pages/TrainingPage";
 
 function Layout() {
   return (
@@ -50,11 +49,6 @@ const homeRoute = createRoute({
   getParentRoute: () => layoutRoute,
   path: "/",
   component: HomePage,
-});
-const trainingRoute = createRoute({
-  getParentRoute: () => layoutRoute,
-  path: "/training",
-  component: TrainingPage,
 });
 const gamesRoute = createRoute({
   getParentRoute: () => layoutRoute,
@@ -100,7 +94,6 @@ const failureRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   layoutRoute.addChildren([
     homeRoute,
-    trainingRoute,
     gamesRoute,
     membershipRoute,
     tournamentsRoute,

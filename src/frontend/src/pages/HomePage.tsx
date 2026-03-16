@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Play, Trophy } from "lucide-react";
+import { Gamepad2, Trophy } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -82,7 +82,7 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
             style={{ animationDelay: "0.65s", opacity: 0 }}
           >
-            <Link to="/training">
+            <Link to="/games">
               <Button
                 data-ocid="hero.primary_button"
                 size="lg"
@@ -93,8 +93,8 @@ export default function HomePage() {
                   boxShadow: "0 0 20px rgba(0,212,255,0.3)",
                 }}
               >
-                <Play className="w-4 h-4 mr-2" />
-                Start Training
+                <Gamepad2 className="w-4 h-4 mr-2" />
+                Select Games
               </Button>
             </Link>
             <Link to="/tournaments">

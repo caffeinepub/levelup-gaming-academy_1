@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
-  { label: "Training", to: "/training" },
   { label: "Games", to: "/games" },
-  { label: "Membership", to: "/membership" },
+  { label: "Membership Packs", to: "/membership" },
   { label: "Tournaments", to: "/tournaments" },
   { label: "Leaderboard", to: "/leaderboard" },
   { label: "Community", to: "/community" },
