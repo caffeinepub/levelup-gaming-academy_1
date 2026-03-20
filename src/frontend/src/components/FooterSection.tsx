@@ -59,7 +59,6 @@ const FOOTER_LINKS = [
   { label: "Tournaments", to: "/tournaments" },
   { label: "Leaderboard", to: "/leaderboard" },
   { label: "Community", to: "/community" },
-  { label: "Contact", to: "/contact" },
 ];
 
 export default function FooterSection() {
@@ -131,8 +130,7 @@ export default function FooterSection() {
           className="mt-8 pt-6 text-center text-xs text-white/20 font-rajdhani uppercase tracking-wider"
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
-          © {new Date().getFullYear()} LevelUp Gaming Academy. All rights
-          reserved.{" "}
+          © 2026 LevelUp Gaming Academy. All rights reserved.{" "}
           <a
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
             target="_blank"

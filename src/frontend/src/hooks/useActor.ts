@@ -11,14 +11,19 @@ export function useActor() {
   const actorQuery = useQuery<backendInterface>({
     queryKey: [ACTOR_QUERY_KEY, identity?.getPrincipal().toString()],
     queryFn: async () => {
-      if (!identity) {
+      const isAuthenticated = !!identity;
+
+      if (!isAuthenticated) {
         return await createActorWithConfig();
       }
 
-      const actor = await createActorWithConfig({
-        agentOptions: { identity },
-      });
-      return actor;
+      const actorOptions = {
+        agentOptions: {
+          identity,
+        },
+      };
+
+      return await createActorWithConfig(actorOptions);
     },
     staleTime: Number.POSITIVE_INFINITY,
     enabled: true,
@@ -27,10 +32,14 @@ export function useActor() {
   useEffect(() => {
     if (actorQuery.data) {
       queryClient.invalidateQueries({
-        predicate: (query) => !query.queryKey.includes(ACTOR_QUERY_KEY),
+        predicate: (query) => {
+          return !query.queryKey.includes(ACTOR_QUERY_KEY);
+        },
       });
       queryClient.refetchQueries({
-        predicate: (query) => !query.queryKey.includes(ACTOR_QUERY_KEY),
+        predicate: (query) => {
+          return !query.queryKey.includes(ACTOR_QUERY_KEY);
+        },
       });
     }
   }, [actorQuery.data, queryClient]);

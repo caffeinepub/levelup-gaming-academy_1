@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: "Tournaments", to: "/tournaments" },
   { label: "Leaderboard", to: "/leaderboard" },
   { label: "Community", to: "/community" },
-  { label: "Contact", to: "/contact" },
 ];
 
 export default function Navbar() {

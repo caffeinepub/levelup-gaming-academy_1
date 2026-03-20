@@ -9,7 +9,6 @@ import {
 import FooterSection from "./components/FooterSection";
 import Navbar from "./components/Navbar";
 import CommunityPage from "./pages/CommunityPage";
-import ContactPage from "./pages/ContactPage";
 import GamesPage from "./pages/GamesPage";
 import HomePage from "./pages/HomePage";
 import LeaderboardPage from "./pages/LeaderboardPage";
@@ -75,11 +74,6 @@ const communityRoute = createRoute({
   path: "/community",
   component: CommunityPage,
 });
-const contactRoute = createRoute({
-  getParentRoute: () => layoutRoute,
-  path: "/contact",
-  component: ContactPage,
-});
 const successRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/payment-success",
@@ -99,7 +93,6 @@ const routeTree = rootRoute.addChildren([
     tournamentsRoute,
     leaderboardRoute,
     communityRoute,
-    contactRoute,
   ]),
   successRoute,
   failureRoute,
